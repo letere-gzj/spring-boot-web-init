@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+
+# spring-doc配置
+springdoc:
+  # 默认开启@ParamterObject注解
+  default-flat-param-object: true
+
