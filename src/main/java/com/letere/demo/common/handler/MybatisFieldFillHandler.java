@@ -13,13 +13,20 @@ import java.time.LocalDateTime;
  */
 @Component
 public class MybatisFieldFillHandler implements MetaObjectHandler {
+
+    private final static String INSERT_FIELD = "createTime";
+
+    private final static String UPDATE_FIELD = "updateTime";
+
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.strictInsertFill(metaObject, "createTime", LocalDateTime::now, LocalDateTime.class);
+        LocalDateTime now = LocalDateTime.now();
+        this.strictInsertFill(metaObject, INSERT_FIELD, () -> now, LocalDateTime.class);
+        this.strictInsertFill(metaObject, UPDATE_FIELD, () -> now, LocalDateTime.class);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
+        this.strictUpdateFill(metaObject, UPDATE_FIELD, LocalDateTime::now, LocalDateTime.class);
     }
 }
