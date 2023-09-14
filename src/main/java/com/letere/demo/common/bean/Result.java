@@ -34,6 +34,10 @@ public class Result<T> {
         return build(ResponseCode.SUCCESS.getCode(), data, null);
     }
 
+    public static <T> Result<T> error(String msg) {
+        return build(ResponseCode.FAIL.getCode(), null, msg);
+    }
+
     public static <T> Result<T> error(String code, String msg) {
         return build(code, null, msg);
     }
