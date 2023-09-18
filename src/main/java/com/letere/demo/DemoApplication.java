@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.letere.demo.mapper")
-public class Run {
+public class DemoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Run.class, args);
+        SpringApplication.run(DemoApplication.class, args);
     }
 }
