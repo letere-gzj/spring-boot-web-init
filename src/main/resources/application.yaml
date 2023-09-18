@@ -5,6 +5,12 @@ spring:
   profiles:
     active: dev
 
+# mybatis-plus配置
+mybatis-plus:
+  # mapper文件位置
+  mapper-locations:
+    - classpath:**/*.xml
+
 # spring-doc配置
 springdoc:
   # 默认开启@ParamterObject注解

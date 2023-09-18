@@ -58,4 +58,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <resources>
+            <!-- 编译xml文件 -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 </project>
