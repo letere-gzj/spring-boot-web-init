@@ -2,6 +2,7 @@ package com.letere.demo.common.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
  * @author gaozijie
  * @date 2023-08-21
  */
+@Component
 public class AuthInterceptor implements HandlerInterceptor {
 
     @Override

@@ -1,6 +1,7 @@
 package com.letere.demo.common.config;
 
 import com.letere.demo.common.interceptor.AuthInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
 
-    private final static String[] SWAGGER_PATHS = {
+    private final static String[] EXCLUDE_PATHS = {
             "/doc.html",
             "/swagger-ui.html",
             "/swagger-ui/**",
@@ -21,10 +22,13 @@ public class InterceptorConfig implements WebMvcConfigurer {
             "/webjars/**"
     };
 
+    @Autowired
+    private AuthInterceptor authInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor())
+        registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns(SWAGGER_PATHS);
+                .excludePathPatterns(EXCLUDE_PATHS);
     }
 }
