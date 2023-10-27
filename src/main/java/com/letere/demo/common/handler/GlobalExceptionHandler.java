@@ -16,11 +16,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = BusinessException.class)
     public Result<?> businessExceptionHandler(HttpServletRequest req, BusinessException e) {
+        e.printStackTrace();
         return Result.error(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(value = Exception.class)
     public Result<Object> exceptionHandler(HttpServletRequest req, Exception e){
+        e.printStackTrace();
         return Result.error(e.getMessage());
     }
 }
