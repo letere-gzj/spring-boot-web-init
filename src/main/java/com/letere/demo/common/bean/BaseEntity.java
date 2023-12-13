@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 /**
  * 基础实体类
  * @author gaozijie
- * @date 2023-08-07
+ * @since 2023-08-07
  */
 @Data
 public class BaseEntity {

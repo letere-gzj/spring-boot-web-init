@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 响应状态码
  * @author gaozijie
- * @date 2023-08-04
+ * @since 2023-08-04
  */
 @AllArgsConstructor
 @Getter

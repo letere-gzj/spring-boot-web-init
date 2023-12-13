@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 /**
  * @author gaozijie
- * @date 2023-08-04
+ * @since 2023-08-04
  */
 public class BeanUtil {
 

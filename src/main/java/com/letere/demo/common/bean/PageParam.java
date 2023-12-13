@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * 分页参数
  * @author gaozijie
- * @date 2023-08-04
+ * @since 2023-08-04
  */
 @Data
 public class PageParam<T> {

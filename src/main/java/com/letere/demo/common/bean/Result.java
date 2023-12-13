@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * 接口统一返回对象
  * @author gaozijie
- * @date 2023-08-04
+ * @since 2023-08-04
  */
 @Data
 @AllArgsConstructor

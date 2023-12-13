@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 /**
  * 全局异常处理
  * @author gaozijie
- * @date 2023-08-04
+ * @since 2023-08-04
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {

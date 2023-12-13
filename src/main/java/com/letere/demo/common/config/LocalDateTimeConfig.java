@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * LocalDateTime参数接收配置
  * @author gaozijie
- * @date 2023-09-18
+ * @since 2023-09-18
  */
 @Configuration
 public class LocalDateTimeConfig {

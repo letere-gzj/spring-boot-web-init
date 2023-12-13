@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * 业务异常类
  * @author gaozijie
- * @date 2023-09-14
+ * @since 2023-09-14
  */
 @Data
 public class BusinessException extends RuntimeException{

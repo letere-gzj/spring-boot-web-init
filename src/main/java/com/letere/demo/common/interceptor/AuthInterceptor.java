@@ -8,7 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 /**
  * 鉴权拦截器
  * @author gaozijie
- * @date 2023-08-21
+ * @since 2023-08-21
  */
 @Component
 public class AuthInterceptor implements HandlerInterceptor {

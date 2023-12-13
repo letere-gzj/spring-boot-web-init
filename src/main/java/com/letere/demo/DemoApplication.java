@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author gaozijie
- * @date 2023-08-04
+ * @since 2023-08-04
  */
 @SpringBootApplication
 @MapperScan("com.letere.demo.mapper")
