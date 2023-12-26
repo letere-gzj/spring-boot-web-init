@@ -1,5 +1,14 @@
+server:
+  port: 8080
+
 spring:
   datasource:
     url: 'jdbc:mysql://localhost:3306/demo?serverTimezone=GMT%2B8'
     username: root
     password: 123456
+
+# sql日志打印(debug开启, off关闭)
+logging:
+  level:
+    # mapper文件路径
+    com.letere.demo.mapper: debug

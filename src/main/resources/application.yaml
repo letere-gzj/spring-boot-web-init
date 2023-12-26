@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 spring:
   profiles:
     active: dev
@@ -15,9 +12,3 @@ mybatis-plus:
 springdoc:
   # 默认开启@ParamterObject注解
   default-flat-param-object: true
-
-# sql日志打印(debug开启, off关闭)
-logging:
-  level:
-    # mapper文件路径
-    com.letere.demo.mapper: debug
