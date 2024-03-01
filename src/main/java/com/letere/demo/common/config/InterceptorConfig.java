@@ -1,6 +1,7 @@
 package com.letere.demo.common.config;
 
 import com.letere.demo.common.interceptor.AuthInterceptor;
+import com.letere.demo.common.interceptor.RepeatRequestInterceptor;
 import com.letere.demo.common.interceptor.RequestLogInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -27,10 +28,13 @@ public class InterceptorConfig implements WebMvcConfigurer {
     private RequestLogInterceptor requestLogInterceptor;
     @Autowired
     private AuthInterceptor authInterceptor;
+    @Autowired
+    private RepeatRequestInterceptor repeatRequestInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(requestLogInterceptor).addPathPatterns("/**");
         registry.addInterceptor(authInterceptor).addPathPatterns("/**").excludePathPatterns(EXCLUDE_PATHS);
+        registry.addInterceptor(repeatRequestInterceptor).addPathPatterns("/**");
     }
 }
