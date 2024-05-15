@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.letere.demo.mapper.DemoMapper">
 
+    <select id="pageDemo" resultType="com.letere.demo.entity.vo.DemoVO">
+        SELECT
+            *
+        FROM
+            `demo`
+        <where>
+            <if test="demoParam.key != null demoParam.key != ''">
+                key LIKE CONCAT( '%', #{demoParam.key}, '%' )
+            </if>
+        </where>
+    </select>
 </mapper>
