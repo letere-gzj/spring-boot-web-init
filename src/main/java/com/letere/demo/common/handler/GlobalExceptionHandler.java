@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(value = Exception.class)
-    public Result<Object> exceptionHandler(HttpServletRequest req, Exception e){
+    public Result<?> exceptionHandler(HttpServletRequest req, Exception e){
         e.printStackTrace();
         return Result.error(e.getMessage());
     }

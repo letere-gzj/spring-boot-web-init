@@ -8,7 +8,7 @@
         FROM
             `demo`
         <where>
-            <if test="demoParam.key != null demoParam.key != ''">
+            <if test="demoParam.key != null and demoParam.key != ''">
                 key LIKE CONCAT( '%', #{demoParam.key}, '%' )
             </if>
         </where>

@@ -23,7 +23,12 @@ public class RepeatRequestInterceptor implements HandlerInterceptor {
     /**
      * 缓存（可整合redis来替代本地缓存）
      */
-    Map<String, Long> cache = new ConcurrentHashMap<>(16);
+    private final static Map<String, Long> CACHE = new ConcurrentHashMap<>(16);
+
+    /**
+     * 缓存名local
+     */
+    private final static ThreadLocal<String> KEY_NAME_LOCAL = new ThreadLocal<>();
 
     /**
      * 缓存失效时间
@@ -41,12 +46,13 @@ public class RepeatRequestInterceptor implements HandlerInterceptor {
         if (!handlerMethod.hasMethodAnnotation(RepeatLimit.class)) {
             return true;
         }
-        String key = this.getCacheKey(request);
-        Long timestamp = cache.get(key);
+        String key = request.getRequestURI() + ":" + request.getSession().getId();
+        KEY_NAME_LOCAL.set(key);
+        Long timestamp = CACHE.get(key);
         long nowTimestamp = System.currentTimeMillis();
         // 缓存为空 | 缓存时间差超出设置缓存取消时间，则放行
         if (Objects.isNull(timestamp) || nowTimestamp - timestamp > CACHE_CANCEL_TIME) {
-            cache.put(key, nowTimestamp);
+            CACHE.put(key, nowTimestamp);
             return true;
         }
         throw new BusinessException("请勿重复提交请求");
@@ -54,12 +60,13 @@ public class RepeatRequestInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        String key = this.getCacheKey(request);
+        String key = KEY_NAME_LOCAL.get();
+        if (Objects.isNull(key)) {
+            return;
+        }
         // 请求结束后移除缓存
-        cache.remove(key);
+        KEY_NAME_LOCAL.remove();
+        CACHE.remove(key);
     }
 
-    private String getCacheKey(HttpServletRequest request) {
-        return request.getRequestURI() + ":" + request.getSession().getId();
-    }
 }
