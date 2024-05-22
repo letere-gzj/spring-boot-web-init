@@ -11,7 +11,6 @@ import com.letere.demo.service.DemoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +28,7 @@ public class DemoController {
 
     @GetMapping("/page")
     @Operation(summary = "分页查询")
-    public Result<?> pageDemo(@ParameterObject PageParam<Demo> pageParam, DemoParam demoParam) {
+    public Result<IPage<DemoVO>> pageDemo(PageParam<Demo> pageParam, DemoParam demoParam) {
         IPage<DemoVO> page = demoService.pageDemo(pageParam, demoParam);
         return Result.success(page);
     }
@@ -37,21 +36,21 @@ public class DemoController {
     @GetMapping("/info/{id}")
     @Operation(summary = "获取详情")
     @Parameter(name = "id", description = "主键")
-    public Result<?> getDemo(@PathVariable("id") Integer id) {
+    public Result<DemoVO> getDemo(@PathVariable("id") Integer id) {
         DemoVO demoVO = demoService.getDemoById(id);
         return Result.success(demoVO);
     }
 
     @PostMapping
     @Operation(summary = "新增")
-    public Result<?> saveDemo(@RequestBody DemoDTO demoDTO) {
+    public Result<Void> saveDemo(@RequestBody DemoDTO demoDTO) {
         demoService.saveDemo(demoDTO);
         return Result.success();
     }
 
     @PutMapping
     @Operation(summary = "修改")
-    public Result<?> updateDemo(@RequestBody DemoDTO demoDTO) {
+    public Result<Void> updateDemo(@RequestBody DemoDTO demoDTO) {
         demoService.updateDemo(demoDTO);
         return Result.success();
     }
@@ -59,7 +58,7 @@ public class DemoController {
     @DeleteMapping
     @Operation(summary = "删除")
     @Parameter(name = "id", description = "主键")
-    public Result<?> deleteDemo(Integer id) {
+    public Result<Void> deleteDemo(Integer id) {
         demoService.deleteDemo(id);
         return Result.success();
     }
