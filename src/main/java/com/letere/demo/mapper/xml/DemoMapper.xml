@@ -8,8 +8,8 @@
         FROM
             `demo`
         <where>
-            <if test="demoParam.key != null and demoParam.key != ''">
-                key LIKE CONCAT( '%', #{demoParam.key}, '%' )
+            <if test="demoParam.demoKey != null and demoParam.demoKey != ''">
+                demo_key LIKE CONCAT( '%', #{demoParam.demoKey}, '%' )
             </if>
         </where>
     </select>

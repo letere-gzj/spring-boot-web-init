@@ -1,10 +1,10 @@
 package com.letere.demo.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.letere.demo.common.bean.BaseEntity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * <p>
@@ -20,13 +20,16 @@ public class Demo extends BaseEntity {
     /**
      * 主键
      */
+    @TableId(type = IdType.AUTO)
     private Integer id;
+
     /**
      * 关键词
      */
-    private String key;
+    private String demoKey;
+
     /**
      * 值
      */
-    private String value;
+    private String demoValue;
 }

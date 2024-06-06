@@ -12,5 +12,5 @@ import lombok.Data;
 public class DemoParam {
 
     @Schema(description = "关键词")
-    private String key;
+    private String demoKey;
 }

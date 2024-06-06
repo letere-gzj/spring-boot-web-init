@@ -13,8 +13,8 @@ public class DemoDTO {
     private Integer id;
 
     @Schema(description = "关键词")
-    private String key;
+    private String demoKey;
 
     @Schema(description = "值")
-    private String value;
+    private String demoValue;
 }
