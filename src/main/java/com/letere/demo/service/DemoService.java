@@ -19,14 +19,14 @@ public interface DemoService extends IService<Demo> {
      * 分页查询
      * @param pageParam 分页参数
      * @param demoParam 查询参数
-     * @return
+     * @return demoVO分页对象
      */
     IPage<DemoVO> pageDemo(PageParam<Demo> pageParam, DemoParam demoParam);
 
     /**
      * 获取demo通过id
      * @param id 主键id
-     * @return
+     * @return demoVO
      */
     DemoVO getDemoById(Integer id);
 

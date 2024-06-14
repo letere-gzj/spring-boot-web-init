@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public Result<?> exceptionHandler(HttpServletRequest req, Exception e){
         e.printStackTrace();
-        // 异常发送通知邮件
+        // 系统异常发送通知邮件
         this.sendExceptionMail(e);
         return Result.error(e.getMessage());
     }
