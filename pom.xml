@@ -23,6 +23,7 @@
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <spring-doc.version>2.2.0</spring-doc.version>
         <knife4j.version>4.3.0</knife4j.version>
+        <springboot-version>3.1.2</springboot-version>
     </properties>
 
     <dependencies>
@@ -72,12 +73,33 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springboot-version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <resources>
             <!-- 编译xml文件 -->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>

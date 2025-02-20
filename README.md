@@ -15,3 +15,5 @@
 + 因为整合MP的字段自动填充，在数据新增or更新时会自动填补上当前时间，所以业务处理时无需处理这两个参数（仅限调用mp接口，自己手写的sql不触发mp字段自动填充）
 + 若要关闭字段自动填充，可修改`/handler/MybatisFieldFillHandler`
 
+#### 4.请求防抖处理
++ 通过拦截器`/common/interceptor/RepeatRequestInterceptor.java`，拦截所有请求。对get请求，或没有注解`@RepeatLimit`标记的接口，则不进行拦截，直接放行
